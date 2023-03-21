@@ -22,15 +22,16 @@ with Diagram("Neir and Open-api Architecture", show=True):
                     ECS("172.16.254.52:8080\n(gzvlam01)")]
             
         with Cluster("API Gateway"):
-            apiG = [ECS("172.16.254.122\n(veonapi)"),
-                    ECS("172.16.254.25\n(gzvldopenapi01)"),
-                    ECS("172.16.254.52\n(gzvlam01)")]
+            with Group("APG"):
+                apiG = ECS("172.16.254.122\n(veonapi)")
+                apiG1 = ECS("172.16.254.25\n(gzvldopenapi01)")
+                apiG2 = ECS("172.16.254.52\n(gzvlam01)")
 
         with Cluster("LAN"):
-            lan = [ Lambda("172.16.7.90(gzvlapihdev02)"),
-                    Lambda("172.16.7.90(gzvllopenapi01)"),
-                    Lambda("172.16.7.90(gzvllopenapi02)"),
-                    Lambda("172.16.7.90(gzvlapihub15)")]
+            lan1 = Lambda("172.16.7.90(gzvlapihdev02)")
+            lan2 = Lambda("172.16.7.90(gzvllopenapi01)")
+            lan3 = Lambda("172.16.7.90(gzvllopenapi02)")
+            lan4 = Lambda("172.16.7.90(gzvlapihub15)")
 
             
 
