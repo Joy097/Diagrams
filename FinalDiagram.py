@@ -14,24 +14,25 @@ with Diagram("Neir and Open-api Architecture", show=True):
 
     with Cluster("Internal Network"):
         
-        source = EKS("k8s source")
+        with Cluster("Load balancer"):
+            source = EKS("172.16.254.26(gzvldopenapi02)")
         
-        with Cluster("Event Workers"):
+        with Cluster("IDM"):
             workers = [ECS("worker1"),
                        ECS("worker2"),
                        ECS("worker3")]
 
-        with Cluster("Event Workers"):
+        with Cluster("API Gateway"):
             workers = [ECS("worker1"),
                        ECS("worker2"),
                        ECS("worker3")]
 
-        with Cluster("Processing"):
+        with Cluster("LAN"):
             handlers = [Lambda("proc1"),
                         Lambda("proc2"),
                         Lambda("proc3")]
             
-        with Cluster("Event Workers"):
+        with Cluster("Business Layer"):
             workers = [ECS("worker1"),
                     ECS("worker2"),
                     ECS("worker3")]
