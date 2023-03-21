@@ -15,30 +15,30 @@ with Diagram("Neir and Open-api Architecture", show=True):
     with Cluster("Internal Network"):
         
         with Cluster("Load balancer"):
-            source = EKS("172.16.254.26(gzvldopenapi02)")
+            lb = EKS("172.16.254.26(gzvldopenapi02)")
         
         with Cluster("IDM"):
-            workers = [ECS("worker1"),
-                       ECS("worker2"),
-                       ECS("worker3")]
+            idm = [ ECS("172.16.254.25:8080(gzvldopenapi01)"),
+                    ECS("172.16.254.52:8080(gzvlam01)")]
 
         with Cluster("API Gateway"):
-            workers = [ECS("worker1"),
-                       ECS("worker2"),
-                       ECS("worker3")]
+            apiG = [ECS("172.16.254.122(veonapi)"),
+                    ECS("172.16.254.25(gzvldopenapi01)"),
+                    ECS("172.16.254.52(gzvlam01)")]
 
         with Cluster("LAN"):
-            handlers = [Lambda("proc1"),
-                        Lambda("proc2"),
-                        Lambda("proc3")]
+            lan = [ Lambda("172.16.7.90(gzvlapihdev02)"),
+                    Lambda("172.16.7.90(gzvllopenapi01)"),
+                    Lambda("172.16.7.90(gzvllopenapi02)"),
+                    Lambda("172.16.7.90(gzvlapihub15)")]
             
         with Cluster("Business Layer"):
-            workers = [ECS("worker1"),
-                    ECS("worker2"),
-                    ECS("worker3")]
+            bl = [ECS("worker1"),
+                  ECS("worker2"),
+                  ECS("worker3")]
             
         with Cluster("Event Workers"):
-            workers = [ECS("worker1"),
+            ew = [ECS("worker1"),
                        ECS("worker2"),
                        ECS("worker3")]
 
