@@ -60,3 +60,7 @@ with Diagram("Neir and Open-api Architecture", show=True):
     lan2 >> bl2
     lan3 >> bl3
     lan4 >> bl4
+    bl1 >> ew1
+    bl2 >> ew3
+    bl3 >> ew5
+    bl4 >> ew6
