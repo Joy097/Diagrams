@@ -3,9 +3,14 @@ from diagrams.aws.compute import ECS, EKS, Lambda
 from diagrams.aws.database import Redshift
 from diagrams.aws.integration import SQS
 from diagrams.aws.storage import S3
+from diagrams import Node
 
 
-class 
+class nginx(Node):
+    _icon = "logos/ngin.png"
+    size = "4em"
+
+    
 
 
 
@@ -20,7 +25,7 @@ with Diagram("Neir and Open-api Architecture", show=True):
     with Cluster("Internal Network"):
         
         with Cluster("Load balancer"):
-            lb = EKS("172.16.254.26\n(gzvldopenapi02)")
+            lb = nginx("172.16.254.26\n(gzvldopenapi02)")
         
         with Cluster("IDM"):
             idm = [ ECS("172.16.254.25:8080\n(gzvldopenapi01)"),
