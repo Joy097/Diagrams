@@ -33,15 +33,19 @@ with Diagram("Neir and Open-api Architecture", show=True):
                     Lambda("172.16.7.90(gzvlapihub15)")]
             
         with Cluster("Business Layer"):
-            bl = [ECS("worker1"),
-                  ECS("worker2"),
-                  ECS("worker3")]
+            bl = [ECS("Identity-Register(N)"),
+                  ECS("CMS(OA)"),
+                  ECS("LMS(OA)"),
+                  ECS("IRIS(OA)"),]
             
-        with Cluster("Event Workers"):
-            ew = [ECS("worker1"),
-                       ECS("worker2"),
-                       ECS("worker3")]
+        with Cluster("Integration Layer(AH & BTRC)"):
+            ew = [  ECS("BTRC"),
+                    ECS("EIR"),
+                    ECS("Customer-Information"),
+                    ECS("IRIS"),
+                    ECS("CMS2"),
+                    ECS("LMS2")]
 
     
 
-    ex_clnt >> source >> workers >> handlers
+    ex_clnt >> lb >> idm >> apiG >> lan >> bl >> ew
