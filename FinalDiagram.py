@@ -3,12 +3,11 @@ from diagrams.aws.compute import ECS, EKS, Lambda
 from diagrams.aws.database import Redshift
 from diagrams.aws.integration import SQS
 from diagrams.aws.storage import S3
-from diagrams import Node
+from diagrams.custom import Custom
 
 
-class nginx(Node):
-    _icon = "logos/ngin.png"
-    size = "4em"
+nginx = "logos/ngin.png"  # change this to the path of your icon file
+
 
     
 
@@ -25,7 +24,7 @@ with Diagram("Neir and Open-api Architecture", show=True):
     with Cluster("Internal Network"):
         
         with Cluster("Load balancer"):
-            lb = nginx("172.16.254.26\n(gzvldopenapi02)")
+            lb = Custom("172.16.254.26\n(gzvldopenapi02)",nginx)
         
         with Cluster("IDM"):
             idm = [ ECS("172.16.254.25:8080\n(gzvldopenapi01)"),
