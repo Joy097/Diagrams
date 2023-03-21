@@ -4,6 +4,11 @@ from diagrams.aws.database import Redshift
 from diagrams.aws.integration import SQS
 from diagrams.aws.storage import S3
 
+
+class 
+
+
+
 with Diagram("Neir and Open-api Architecture", show=True):
     
     with Cluster("External Network"):
@@ -22,9 +27,9 @@ with Diagram("Neir and Open-api Architecture", show=True):
                     ECS("172.16.254.52:8080\n(gzvlam01)")]
             
         with Cluster("API Gateway"):
-                apiG = ECS("172.16.254.122\n(veonapi)")
-                apiG1 = ECS("172.16.254.25\n(gzvldopenapi01)")
-                apiG2 = ECS("172.16.254.52\n(gzvlam01)")
+            apiG = ECS("172.16.254.122\n(veonapi)")
+            apiG1 = ECS("172.16.254.25\n(gzvldopenapi01)")
+            apiG2 = ECS("172.16.254.52\n(gzvlam01)")
 
         with Cluster("LAN"):
             lan1 = Lambda("172.16.7.90\n(gzvlapihdev02)")
