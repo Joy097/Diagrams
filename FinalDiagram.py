@@ -22,21 +22,41 @@ with Diagram("Neir and Open-api Architecture", show=True):
                     ECS("172.16.254.52:8080\n(gzvlam01)")]
             
         with Cluster("API Gateway"):
-            with Group("APG"):
                 apiG = ECS("172.16.254.122\n(veonapi)")
                 apiG1 = ECS("172.16.254.25\n(gzvldopenapi01)")
                 apiG2 = ECS("172.16.254.52\n(gzvlam01)")
 
         with Cluster("LAN"):
-            lan1 = Lambda("172.16.7.90(gzvlapihdev02)")
-            lan2 = Lambda("172.16.7.90(gzvllopenapi01)")
-            lan3 = Lambda("172.16.7.90(gzvllopenapi02)")
-            lan4 = Lambda("172.16.7.90(gzvlapihub15)")
-
+            lan1 = Lambda("172.16.7.90\n(gzvlapihdev02)")
+            lan2 = Lambda("172.16.7.90\n(gzvllopenapi01)")
+            lan3 = Lambda("172.16.7.90\n(gzvllopenapi02)")
+            lan4 = Lambda("172.16.7.90\n(gzvlapihub15)")
             
-
+        with Cluster("Business Layer"):
+            bl1 =  ECS("Identity-Register(N)")
+            bl2 =  ECS("CMS(OA)")
+            bl3 =  ECS("LMS(OA)")
+            bl4 =  ECS("IRIS(OA)")
+            
         
-    
+        with Cluster("Integration Layer(AH & BTRC)"):
+            ew1 =   ECS("BTRC")
+            ew2 =   ECS("EIR")
+            ew3 =   ECS("Customer-Information")
+            ew4 =   ECS("IRIS")
+            ew5 =   ECS("CMS2")
+            ew6 =   ECS("LMS2")
+
+
+                
 
     ex_clnt >> lb >> idm
-    lb >> apiG
+    lb >> apiG >> lan1
+    lb >> apiG1
+    lb >> apiG2 >> lan4
+    apiG1 >> lan2
+    apiG1 >> lan3
+    lan1 >> bl1
+    lan2 >> bl2
+    lan3 >> bl3
+    lan4 >> bl4
