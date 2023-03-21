@@ -10,24 +10,37 @@ with Diagram("Neir and Open-api Architecture", show=True):
         ex_clnt = [ECS("BTRC"),
                    ECS("SSL-COMMERZ")]
         
-    source = EKS("k8s source")
+    
 
     with Cluster("Internal Network"):
+        
+        source = EKS("k8s source")
+        
         with Cluster("Event Workers"):
             workers = [ECS("worker1"),
                        ECS("worker2"),
                        ECS("worker3")]
 
-        queue = SQS("event queue")
+        with Cluster("Event Workers"):
+            workers = [ECS("worker1"),
+                       ECS("worker2"),
+                       ECS("worker3")]
 
         with Cluster("Processing"):
             handlers = [Lambda("proc1"),
                         Lambda("proc2"),
                         Lambda("proc3")]
+            
+        with Cluster("Event Workers"):
+            workers = [ECS("worker1"),
+                    ECS("worker2"),
+                    ECS("worker3")]
+            
+        with Cluster("Event Workers"):
+            workers = [ECS("worker1"),
+                       ECS("worker2"),
+                       ECS("worker3")]
 
-    store = S3("events store")
-    dw = Redshift("analytics")
+    
 
-    ex_clnt >> source >> workers >> queue >> handlers
-    handlers >> store
-    handlers >> dw
+    ex_clnt >> source >> workers >> handlers
