@@ -1,5 +1,4 @@
 from diagrams import Cluster, Diagram
-from diagrams.aws.compute import Custom, EKS
 from diagrams.aws.database import Redshift
 from diagrams.aws.integration import SQS
 from diagrams.aws.storage import S3
@@ -11,6 +10,7 @@ external = "logos/external.png"
 apiGateway = "logos/apiG.png"
 IDM = "logos/IDM.png"
 LAN = "logos/LAN.png"
+srvc = "logos/services.png"
 
 
     
@@ -46,19 +46,19 @@ with Diagram("Neir and Open-api Architecture", show=True):
             lan4 = Custom("172.16.7.90\n(gzvlapihub15)",LAN)
             
         with Cluster("Business Layer"):
-            bl1 =  Custom("Identity-Register(N)")
-            bl2 =  Custom("CMS(OA)")
-            bl3 =  Custom("LMS(OA)")
-            bl4 =  Custom("IRIS(OA)")
+            bl1 =  Custom("Identity-Register(N)",srvc)
+            bl2 =  Custom("CMS(OA)",srvc)
+            bl3 =  Custom("LMS(OA)",srvc)
+            bl4 =  Custom("IRIS(OA)",srvc)
             
         
         with Cluster("Integration Layer(AH & BTRC)"):
-            ew1 =   Custom("BTRC")
-            ew2 =   Custom("EIR")
-            ew3 =   Custom("Customer-Information")
-            ew4 =   Custom("IRIS")
-            ew5 =   Custom("CMS2")
-            ew6 =   Custom("LMS2")
+            ew1 =   Custom("BTRC",srvc)
+            ew2 =   Custom("EIR",srvc)
+            ew3 =   Custom("Customer-Information",srvc)
+            ew4 =   Custom("IRIS",srvc)
+            ew5 =   Custom("CMS2",srvc)
+            ew6 =   Custom("LMS2",srvc)
 
 
                 
