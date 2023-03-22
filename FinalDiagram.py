@@ -1,4 +1,4 @@
-from diagrams import Cluster, Diagram
+from diagrams import Cluster, Diagram, Edge
 from diagrams.aws.database import Redshift
 from diagrams.aws.integration import SQS
 from diagrams.aws.storage import S3
