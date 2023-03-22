@@ -36,7 +36,7 @@ graph_font1={
 with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
     
     with Cluster("External Network",graph_attr=graph_ex):
-        ex_clnt = [Custom("BTRC",external,graph_attr=graph_font1),
+        ex_clnt = [Custom("BTRC",external),
                    Custom("SSL-COMMERZ",external)]
         
     
