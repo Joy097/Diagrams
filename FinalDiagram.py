@@ -19,47 +19,56 @@ graph_attr={
     "fontsize":"40",
     "fontweight":"bold"
 }
-
 graph_in={
     "fontsize":"25"
+}
+graph_ex={
+    "fontsize":"30",
+    "width":"450px",
+    }
+graph_font={
+    "fontsize":"20"
+}
+graph_font1={
+    "fontsize":"15"
 }
 
 with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
     
-    with Cluster("External Network",graph_attr=graph_):
-        ex_clnt = [Custom("BTRC",external),
+    with Cluster("External Network",graph_attr=graph_ex):
+        ex_clnt = [Custom("BTRC",external,graph_attr=graph_font1),
                    Custom("SSL-COMMERZ",external)]
         
     
 
     with Cluster("Internal Network",graph_attr=graph_in):
         
-        with Cluster("Load balancer"):
+        with Cluster("Load balancer",graph_attr=graph_font):
             lb = Custom("172.16.254.26\n(gzvldopenapi02)",loadBalancer)
         
-        with Cluster("IDM"):
+        with Cluster("IDM",graph_attr=graph_font):
             idm = [ Custom("172.16.254.25:8080\n(gzvldopenapi01)",IDM),
                     Custom("172.16.254.52:8080\n(gzvlam01)",IDM)]
             
-        with Cluster("API Gateway"):
+        with Cluster("API Gateway",graph_attr=graph_font):
             apiG = Custom("172.16.254.122\n(veonapi)",apiGateway)
             apiG1 = Custom("172.16.254.25\n(gzvldopenapi01)",apiGateway)
             apiG2 = Custom("172.16.254.52\n(gzvlam01)",apiGateway)
 
-        with Cluster("LAN"):
+        with Cluster("LAN",graph_attr=graph_font):
             lan1 = Custom("172.16.7.90\n(gzvlapihdev02)",LAN)
             lan2 = Custom("172.16.7.90\n(gzvllopenapi01)",LAN)
             lan3 = Custom("172.16.7.90\n(gzvllopenapi02)",LAN)
             lan4 = Custom("172.16.7.90\n(gzvlapihub15)",LAN)
             
-        with Cluster("Business Layer"):
+        with Cluster("Business Layer",graph_attr=graph_font):
             bl1 =  Custom("Identity-Register(N)",srvc)
             bl2 =  Custom("CMS(OA)",srvc)
             bl3 =  Custom("LMS(OA)",srvc)
             bl4 =  Custom("IRIS(OA)",srvc)
             
         
-        with Cluster("Integration Layer(AH & BTRC)"):
+        with Cluster("Integration Layer(AH & BTRC)",graph_attr=graph_font):
             ew1 =   Custom("BTRC",srvc)
             ew2 =   Custom("EIR",srvc)
             ew3 =   Custom("Customer-Information",srvc)
