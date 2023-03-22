@@ -1,5 +1,5 @@
 from diagrams import Cluster, Diagram
-from diagrams.aws.compute import ECS, EKS, Lambda
+from diagrams.aws.compute import Custom, EKS
 from diagrams.aws.database import Redshift
 from diagrams.aws.integration import SQS
 from diagrams.aws.storage import S3
@@ -7,8 +7,10 @@ from diagrams.custom import Custom
 
 
 loadBalancer = "logos/lb.png" 
-external = 
-
+external = "logos/external.png"
+apiGateway = "logos/apiG.png"
+IDM = "logos/IDM.png"
+LAN = "logos/LAN.png"
 
 
     
@@ -18,8 +20,8 @@ external =
 with Diagram("Neir and Open-api Architecture", show=True):
     
     with Cluster("External Network"):
-        ex_clnt = [ECS("BTRC"),
-                   ECS("SSL-COMMERZ")]
+        ex_clnt = [Custom("BTRC",external),
+                   Custom("SSL-COMMERZ",external)]
         
     
 
@@ -29,34 +31,34 @@ with Diagram("Neir and Open-api Architecture", show=True):
             lb = Custom("172.16.254.26\n(gzvldopenapi02)",loadBalancer)
         
         with Cluster("IDM"):
-            idm = [ ECS("172.16.254.25:8080\n(gzvldopenapi01)"),
-                    ECS("172.16.254.52:8080\n(gzvlam01)")]
+            idm = [ Custom("172.16.254.25:8080\n(gzvldopenapi01)",IDM),
+                    Custom("172.16.254.52:8080\n(gzvlam01)",IDM)]
             
         with Cluster("API Gateway"):
-            apiG = ECS("172.16.254.122\n(veonapi)")
-            apiG1 = ECS("172.16.254.25\n(gzvldopenapi01)")
-            apiG2 = ECS("172.16.254.52\n(gzvlam01)")
+            apiG = Custom("172.16.254.122\n(veonapi)",apiGateway)
+            apiG1 = Custom("172.16.254.25\n(gzvldopenapi01)",apiGateway)
+            apiG2 = Custom("172.16.254.52\n(gzvlam01)",apiGateway)
 
         with Cluster("LAN"):
-            lan1 = Lambda("172.16.7.90\n(gzvlapihdev02)")
-            lan2 = Lambda("172.16.7.90\n(gzvllopenapi01)")
-            lan3 = Lambda("172.16.7.90\n(gzvllopenapi02)")
-            lan4 = Lambda("172.16.7.90\n(gzvlapihub15)")
+            lan1 = Custom("172.16.7.90\n(gzvlapihdev02)",LAN)
+            lan2 = Custom("172.16.7.90\n(gzvllopenapi01)",LAN)
+            lan3 = Custom("172.16.7.90\n(gzvllopenapi02)",LAN)
+            lan4 = Custom("172.16.7.90\n(gzvlapihub15)",LAN)
             
         with Cluster("Business Layer"):
-            bl1 =  ECS("Identity-Register(N)")
-            bl2 =  ECS("CMS(OA)")
-            bl3 =  ECS("LMS(OA)")
-            bl4 =  ECS("IRIS(OA)")
+            bl1 =  Custom("Identity-Register(N)")
+            bl2 =  Custom("CMS(OA)")
+            bl3 =  Custom("LMS(OA)")
+            bl4 =  Custom("IRIS(OA)")
             
         
         with Cluster("Integration Layer(AH & BTRC)"):
-            ew1 =   ECS("BTRC")
-            ew2 =   ECS("EIR")
-            ew3 =   ECS("Customer-Information")
-            ew4 =   ECS("IRIS")
-            ew5 =   ECS("CMS2")
-            ew6 =   ECS("LMS2")
+            ew1 =   Custom("BTRC")
+            ew2 =   Custom("EIR")
+            ew3 =   Custom("Customer-Information")
+            ew4 =   Custom("IRIS")
+            ew5 =   Custom("CMS2")
+            ew6 =   Custom("LMS2")
 
 
                 
