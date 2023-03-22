@@ -64,10 +64,10 @@ with Diagram("Neir and Open-api Architecture", show=True):
 
                 
 
-    ex_clnt >> lb >> idm
-    lb >> apiG >> lan1
-    lb >> apiG1
-    lb >> apiG2 >> lan4
+    ex_clnt >> lb >>Edge(label="IDM(Keycloak)")>> idm
+    lb >> Edge(label="test")>> apiG >> lan1
+    lb >> Edge(label="prod")>> apiG1
+    lb >> Edge(label="pre-prod")>> apiG2 >> lan4
     apiG1 >> lan2
     apiG1 >> lan3
     lan1 >> bl1
