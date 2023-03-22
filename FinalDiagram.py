@@ -5,6 +5,7 @@ from diagrams.aws.storage import S3
 from diagrams.custom import Custom
 
 
+
 loadBalancer = "logos/lb.png" 
 external = "logos/external.png"
 apiGateway = "logos/apiG.png"
@@ -19,11 +20,12 @@ def edit (font):
         font.fontsize = "14"
         font.fontcolor = "red"
 
-IN = Shape("Internal Network")
+
 
 with Diagram("Neir and Open-api Architecture", show=True):
     
     with Cluster("External Network"):
+        IN = Shape("Internal Network")
         ex_clnt = [Custom("BTRC",external),
                    Custom("SSL-COMMERZ",external)]
         
