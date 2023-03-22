@@ -14,11 +14,14 @@ LAN = "logos/LAN.png"
 srvc = "logos/services.png"
 
 
+graph_attr={
+    "margin-up": "10px",
+    "fontsize":"40"
+}
 
 
 
-
-with Diagram("Neir and Open-api Architecture", show=True):
+with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
     
     with Cluster("External Network"):
         ex_clnt = [Custom("BTRC",external),
