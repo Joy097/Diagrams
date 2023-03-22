@@ -1,13 +1,1 @@
-graph_in={
-    "fontsize":"25"
-}
-graph_ex={
-    "fontsize":"30",
-    "width":"450px",
-    }
-graph_font={
-    "fontsize":"20"
-}
-graph_font1={
-    "fontsize":"15"
-}
+,fontsize="15"
