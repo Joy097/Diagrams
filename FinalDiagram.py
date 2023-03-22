@@ -6,7 +6,9 @@ from diagrams.aws.storage import S3
 from diagrams.custom import Custom
 
 
-nginx = "logos/ngin.png"  # change this to the path of your icon file
+loadBalancer = "logos/lb.png" 
+external = 
+
 
 
     
@@ -24,7 +26,7 @@ with Diagram("Neir and Open-api Architecture", show=True):
     with Cluster("Internal Network"):
         
         with Cluster("Load balancer"):
-            lb = Custom("172.16.254.26\n(gzvldopenapi02)",nginx)
+            lb = Custom("172.16.254.26\n(gzvldopenapi02)",loadBalancer)
         
         with Cluster("IDM"):
             idm = [ ECS("172.16.254.25:8080\n(gzvldopenapi01)"),
