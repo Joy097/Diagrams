@@ -1,4 +1,4 @@
-from diagrams import Cluster, Diagram
+from diagrams import Cluster, Diagram, Shape
 from diagrams.aws.database import Redshift
 from diagrams.aws.integration import SQS
 from diagrams.aws.storage import S3
@@ -13,9 +13,13 @@ LAN = "logos/LAN.png"
 srvc = "logos/services.png"
 
 
-    
+def edit (font):
+        font.horizontal_alignment = "center"
+        font.fontfamily = "Arial"
+        font.fontsize = "14"
+        font.fontcolor = "red"
 
-
+IN = Shape("Internal Network")
 
 with Diagram("Neir and Open-api Architecture", show=True):
     
@@ -25,7 +29,7 @@ with Diagram("Neir and Open-api Architecture", show=True):
         
     
 
-    with Cluster("Internal Network"):
+    with Cluster(IN):
         
         with Cluster("Load balancer"):
             lb = Custom("172.16.254.26\n(gzvldopenapi02)",loadBalancer)
