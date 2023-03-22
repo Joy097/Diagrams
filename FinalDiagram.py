@@ -1,4 +1,4 @@
-from diagrams import Cluster, Diagram, style
+from diagrams import Cluster, Diagram
 from diagrams.aws.database import Redshift
 from diagrams.aws.integration import SQS
 from diagrams.aws.storage import S3
@@ -19,8 +19,7 @@ srvc = "logos/services.png"
 
 
 with Diagram("Neir and Open-api Architecture", show=True):
-    diag = Cluster().__enter__().diag
-    diag.style['font-size'] = '30px'
+    
     with Cluster("External Network"):
         ex_clnt = [Custom("BTRC",external),
                    Custom("SSL-COMMERZ",external)]
