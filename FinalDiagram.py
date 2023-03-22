@@ -21,13 +21,12 @@ graph_attr={
 }
 
 graph_in={
-    "fontsize":"25",
-    "text-align": "center"
+    "fontsize":"25"
 }
 
 with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
     
-    with Cluster("External Network"):
+    with Cluster("External Network",graph_attr=graph_):
         ex_clnt = [Custom("BTRC",external),
                    Custom("SSL-COMMERZ",external)]
         
