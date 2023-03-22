@@ -15,11 +15,15 @@ srvc = "logos/services.png"
 
 
 graph_attr={
-    "margin-up": "10px",
-    "fontsize":"40"
+    "margin-up": "600px",
+    "fontsize":"40",
+    "fontweight":"bold"
 }
 
-
+graph_in={
+    "fontsize":"25",
+    "text-align": "center"
+}
 
 with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
     
@@ -29,7 +33,7 @@ with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
         
     
 
-    with Cluster("Internal Network"):
+    with Cluster("Internal Network",graph_attr=graph_in):
         
         with Cluster("Load balancer"):
             lb = Custom("172.16.254.26\n(gzvldopenapi02)",loadBalancer)
