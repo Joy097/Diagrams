@@ -87,6 +87,8 @@ with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
     lb >> Edge(label="prod",fontsize="18px")>> apiG1
     lb >> Edge(label="pre-prod",fontsize="18px")>> apiG2 >> lan4
     idm - apiG
+    idm - apiG1
+    idm - apiG2
     apiG1 >> lan2
     apiG1 >> lan3
     lan1 >> bl1
