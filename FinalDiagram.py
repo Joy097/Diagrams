@@ -82,10 +82,11 @@ with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
 
                 
 
+    #ex_clnt >> lb >>Edge(label="IDM(Keycloak)",fontsize="18px")>> idm
     ex_clnt >> lb >>Edge(label="IDM(Keycloak)",fontsize="18px")>> idm
-    lb >> Edge(label="test",fontsize="18px")>> apiG >> lan1
-    lb >> Edge(label="prod",fontsize="18px")>> apiG1
-    lb >> Edge(label="pre-prod",fontsize="18px")>> apiG2 >> lan4
+    lb >> Edge(fontsize="18px")>> apiG >> lan1
+    lb >> Edge(fontsize="18px")>> apiG1
+    lb >> Edge(fontsize="18px")>> apiG2 >> lan4
     apiG1 >> lan2
     apiG1 >> lan3
     lan1 >> bl1
@@ -98,6 +99,5 @@ with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
     bl4 >> ew6
     
     #to bring IDM in front
-    idm - Edge(color="transparent") - apiG
-    idm - Edge(color="transparent") - apiG1
+    
     idm - Edge(color="transparent") - apiG2
