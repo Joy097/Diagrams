@@ -86,7 +86,6 @@ with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
     lb >> Edge(label="test",fontsize="18px")>> apiG >> lan1
     lb >> Edge(label="prod",fontsize="18px")>> apiG1
     lb >> Edge(label="pre-prod",fontsize="18px")>> apiG2 >> lan4
-    idm >> apiG
     apiG1 >> lan2
     apiG1 >> lan3
     lan1 >> bl1
@@ -97,3 +96,8 @@ with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
     bl2 >> ew3
     bl3 >> ew5
     bl4 >> ew6
+    
+    #to bring IDM in front
+    idm - Edge(color="transparent") - apiG
+    idm - Edge(color="transparent") - apiG1
+    idm - Edge(color="transparent") - apiG2
