@@ -1,14 +1,16 @@
-from diagrams import Cluster, Diagram
+from diagrams import Diagram, Cluster
 from diagrams.aws.compute import EC2
-from diagrams.aws.database import RDS
-from diagrams.aws.network import VPC
+from diagrams.aws.network import ELB
 
-with Diagram("Example Diagram", show=False):
-    with Cluster("VPC"):
-        with Cluster("Private Subnet", label="Database Servers"):
-            rds = RDS("Example RDS Instance")
+with Diagram("Example Diagram"):
 
-        with Cluster("Public Subnet"):
-            # ... add resources to public subnet cluster ...
+    with Cluster("Cluster 1"):
+        ec2_1 = EC2("EC2 1")
+        ec2_2 = EC2("EC2 2")
 
-        VPC("Example VPC") >> Cluster("Database Servers", group="databases") >> rds
+    with Cluster("Cluster 2"):
+        elb = ELB("ELB")
+
+    # Set color attribute of the edge to transparent
+    ec2_1 >> elb >> ec2_2 << elb << ec2_1
+    elb.color = "transparent"
