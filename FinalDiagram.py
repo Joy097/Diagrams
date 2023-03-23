@@ -26,6 +26,7 @@ graph_in={
 graph_ex={
     "fontsize":"30",
     "width":"450px",
+    "pos":"10,10!"
     }
 graph_font={
     "pos":"10,10!",
@@ -37,7 +38,7 @@ graph_font1={
 
 with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
     
-    with Cluster("External Network",graph_attr=graph_ex,graph_attr={"pos":"10,10!"}):
+    with Cluster("External Network",graph_attr=graph_ex):
         ex_clnt = [Custom("BTRC",external,fontsize="18px"),
                    Custom("SSL-COMMERZ",external,fontsize="18px")]
         
