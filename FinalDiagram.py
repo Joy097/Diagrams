@@ -1,6 +1,7 @@
 from diagrams import Cluster, Diagram, Edge
 from diagrams.aws.database import Redshift
 from diagrams.aws.integration import SQS
+from diagrams.aws.compute import EC2
 from diagrams.aws.storage import S3
 from diagrams.custom import Custom
 
@@ -27,7 +28,8 @@ graph_ex={
     "width":"450px",
     }
 graph_font={
-    "fontsize":"20"
+    "pos":"10,10!",
+    "fontsize":"20",
 }
 graph_font1={
     "fontsize":"15"
@@ -47,8 +49,8 @@ with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
             lb = Custom("172.16.254.26\n(gzvldopenapi02)",loadBalancer,fontsize="18px")
         
         with Cluster("IDM",graph_attr=graph_font):
-            idm = [ Custom("172.16.254.25:8080\n(gzvldopenapi01)",IDM,fontsize="18px"),
-                    Custom("172.16.254.52:8080\n(gzvlam01)",IDM,fontsize="18px")]
+            idm = [ EC2("172.16.254.25:8080\n(gzvldopenapi01)",fontsize="18px"),
+                    EC2("172.16.254.52:8080\n(gzvlam01)",fontsize="18px")]
             
         with Cluster("API Gateway",graph_attr=graph_font):
             apiG = Custom("172.16.254.122\n(veonapi)",apiGateway,fontsize="18px")
