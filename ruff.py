@@ -1,16 +1,9 @@
-from diagrams import Diagram, Cluster, Edge
-from diagrams.digitalocean.compute import Droplet
-from diagrams.digitalocean.database import DbaasPrimary
-from diagrams.elastic.elasticsearch import Logstash
+from diagrams import Diagram, Cluster
+from diagrams.utils import save
+from diagrams.aws.compute import EC2
 
-with Diagram("My Diagram: Droplets", show=True, filename="my-diagram", direction="LR"):
-    with Cluster("DigitalOcean"):
-        droplet1 = Droplet("My first droplet")
-        droplet2 = Droplet("My second droplet")
 
-    db = DbaasPrimary("My database")
-    
-    logstash = Logstash("Logstash service")
-    
-    [droplet1, droplet2] >> db >> [droplet1, droplet2]
-    [droplet1, droplet2, db] >> Edge(color="firebrick", style="dashed") >> logstash
+with Diagram("Example Diagram"):
+    with Cluster("Example Cluster", graph_attr={"pos": "10,10!"}):
+        ec2 = EC2("Example EC2 Instance")
+    save("example-diagram.svg")
