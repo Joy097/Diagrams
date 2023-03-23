@@ -3,7 +3,7 @@ from diagrams.digitalocean.compute import Droplet
 from diagrams.digitalocean.database import DbaasPrimary
 from diagrams.elastic.elasticsearch import Logstash
 
-with Diagram("My Diagram: Droplets", show=False, filename="my-diagram", direction="LR"):
+with Diagram("My Diagram: Droplets", show=True, filename="my-diagram", direction="LR"):
     with Cluster("DigitalOcean"):
         droplet1 = Droplet("My first droplet")
         droplet2 = Droplet("My second droplet")
