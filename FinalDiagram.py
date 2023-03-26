@@ -40,7 +40,7 @@ with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
         with Cluster("Load balancer",graph_attr=graph_font):
             lb = Custom("172.16.254.26\n(gzvldopenapi02)",loadBalancer,fontsize="18px")
         
-        with Cluster("IDM",graph_attr={"fontsize":"20", "align": "center"}):
+        with Cluster("IDM",graph_attr={"fontsize":"20"}):
             idm = [ Custom("172.16.254.25:8080\n(gzvldopenapi01)",IDM,fontsize="18px"),
                     Custom("172.16.254.52:8080\n(gzvlam01)",IDM,fontsize="18px")]
             
