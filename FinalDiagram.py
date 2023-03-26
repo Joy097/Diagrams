@@ -27,7 +27,7 @@ graph_ex={
     }
 graph_font={
     "fontsize":"20",
-    "width":"600px"
+    "width":"600"
 }
 
 
@@ -49,19 +49,23 @@ with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
                     Custom("172.16.254.52:8080\n(gzvlam01)",IDM,fontsize="18px")]
             
         with Cluster("API Gateway",graph_attr=graph_font):
-            apiG = Custom("172.16.254.122\n(veonapi)",apiGateway,fontsize="18px")
-            apiG1 = Custom("172.16.254.25\n(gzvldopenapi01)",apiGateway,fontsize="18px")
-            apiG2 = Custom("172.16.254.52\n(gzvlam01)",apiGateway,fontsize="18px")
+            with Cluster('veonapi'):
+                apiG = Custom("\n172.16.254.122",apiGateway,fontsize="18px")
+            with Cluster('gzvldopenapi01'):
+                apiG1 = Custom("\n172.16.254.25",apiGateway,fontsize="18px")
+            with Cluster('gzvlam01'):
+                apiG2 = Custom("\n172.16.254.52",apiGateway,fontsize="18px")
+
 
         with Cluster("LAN",graph_attr=graph_font):
             with Cluster('gzvlapihdev02',graph_attr=graph_font):
-                lan1 = Custom("172.16.7.90",LAN,fontsize="18px")
+                lan1 = Custom("\n172.16.7.90",LAN,fontsize="18px")
             with Cluster('gzvllopenapi01',graph_attr=graph_font):
-                lan2 = Custom("172.16.7.90",LAN,fontsize="18px")
+                lan2 = Custom("\n172.16.7.90",LAN,fontsize="18px")
             with Cluster('gzvllopenapi02',graph_attr=graph_font):
-                lan3 = Custom("172.16.7.90",LAN,fontsize="18px")
+                lan3 = Custom("\n172.16.7.90",LAN,fontsize="18px")
             with Cluster('gzvlapihub15',graph_attr=graph_font):
-                lan4 = Custom("172.16.7.90",LAN,fontsize="18px")
+                lan4 = Custom("\n172.16.7.90",LAN,fontsize="18px")
            
             
         with Cluster("Business Layer",graph_attr=graph_font):
