@@ -20,13 +20,10 @@ graph_attr={
     "fontweight":"bold"
 }
 graph_in={
-    "fontsize":"45",
-    "height": "1000px",
-    "align": "center"
+    "fontsize":"45"
 }
 graph_font={
-    "fontsize":"20",
-    "width":"600"
+    "fontsize":"20"
 }
 
 
