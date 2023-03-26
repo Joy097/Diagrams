@@ -1,9 +1,0 @@
-from graphviz import Digraph
-
-dot = Digraph()
-
-# Add a node with a label and shape
-dot.node('box1', label='My Box', shape='box')
-
-# Render the graph
-dot.render('mybox', format='png')
