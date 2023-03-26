@@ -27,6 +27,7 @@ graph_ex={
     }
 graph_font={
     "fontsize":"20",
+    "width":"600px"
 }
 
 
@@ -64,11 +65,16 @@ with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
            
             
         with Cluster("Business Layer",graph_attr=graph_font):
-            bl1 =  Custom("Identity-Register(N)",srvc,fontsize="18px")
-            bl2 =  Custom("CMS(OA)",srvc,fontsize="18px")
-            bl3 =  Custom("LMS(OA)",srvc,fontsize="18px")
-            bl4 =  Custom("IRIS(OA)",srvc,fontsize="18px")
-            
+            with Cluster('Identity-Register(N)',graph_attr=graph_font):
+                bl1 = Custom("",srvc,fontsize="18px")
+            with Cluster('CMS(OA)',graph_attr=graph_font):
+                bl2 = Custom("",srvc,fontsize="18px")
+            with Cluster('LMS(OA)',graph_attr=graph_font):
+                bl3 = Custom("",srvc,fontsize="18px")
+            with Cluster('IRIS(OA)',graph_attr=graph_font):
+                bl4 = Custom("",srvc,fontsize="18px")
+                
+        
         
         with Cluster("Integration Layer(AH & BTRC)",graph_attr=graph_font):
             ew1 =   Custom("BTRC",srvc,fontsize="18px")
