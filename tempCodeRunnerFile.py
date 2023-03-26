@@ -1,1 +1,2 @@
-,fontsize="18px")
+
+    "align":"center"

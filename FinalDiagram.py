@@ -20,10 +20,11 @@ graph_attr={
     "fontweight":"bold"
 }
 graph_in={
-    "fontsize":"25"
+    "fontsize":"45"
 }
 graph_ex={
-    "fontsize":"30"
+    "fontsize":"30",
+    "align":"center"
     }
 graph_font={
     "fontsize":"20",
@@ -49,11 +50,11 @@ with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
                     Custom("172.16.254.52:8080\n(gzvlam01)",IDM,fontsize="18px")]
             
         with Cluster("API Gateway",graph_attr=graph_font):
-            with Cluster('veonapi'):
+            with Cluster('veonapi',graph_attr=graph_font):
                 apiG = Custom("\n172.16.254.122",apiGateway,fontsize="18px")
-            with Cluster('gzvldopenapi01'):
+            with Cluster('gzvldopenapi01',graph_attr=graph_font):
                 apiG1 = Custom("\n172.16.254.25",apiGateway,fontsize="18px")
-            with Cluster('gzvlam01'):
+            with Cluster('gzvlam01',graph_attr=graph_font):
                 apiG2 = Custom("\n172.16.254.52",apiGateway,fontsize="18px")
 
 
@@ -81,12 +82,20 @@ with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
         
         
         with Cluster("Integration Layer(AH & BTRC)",graph_attr=graph_font):
-            ew1 =   Custom("BTRC",srvc,fontsize="18px")
-            ew2 =   Custom("EIR",srvc,fontsize="18px")
-            ew3 =   Custom("Customer-Information",srvc,fontsize="18px")
-            ew4 =   Custom("IRIS",srvc,fontsize="18px")
-            ew5 =   Custom("CMS2",srvc,fontsize="18px")
-            ew6 =   Custom("LMS2",srvc,fontsize="18px")
+            with Cluster('BTRC',graph_attr=graph_font):
+                ew1 = Custom("",srvc)
+            with Cluster('EIR',graph_attr=graph_font):
+                ew2 = Custom("",srvc)
+            with Cluster('Customer-Information',graph_attr=graph_font):
+                ew3 = Custom("",srvc)
+            with Cluster('IRIS',graph_attr=graph_font):
+                ew4 = Custom("",srvc)
+            with Cluster('CMS2',graph_attr=graph_font):
+                ew5 = Custom("",srvc)
+            with Cluster('LMS2',graph_attr=graph_font):
+                ew6 = Custom("",srvc)
+                
+            
 
 
                 
