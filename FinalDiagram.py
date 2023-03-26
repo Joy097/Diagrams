@@ -15,7 +15,6 @@ srvc = "logos/services.png"
 
 
 graph_attr={
-    "margin-up": "600px",
     "fontsize":"40",
     "fontweight":"bold"
 }
@@ -40,9 +39,12 @@ with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
         with Cluster("Load balancer",graph_attr=graph_font):
             lb = Custom("172.16.254.26\n(gzvldopenapi02)",loadBalancer,fontsize="18px")
         
-        with Cluster("IDM",graph_attr={"fontsize":"20","y":"500"}):
-            idm = [ Custom("172.16.254.25:8080\n(gzvldopenapi01)",IDM,fontsize="18px"),
-                    Custom("172.16.254.52:8080\n(gzvlam01)",IDM,fontsize="18px")]
+        with Cluster("IDM",graph_attr={"fontsize":"20","height":"500"}):
+            with Cluster('gzvldopenapi01',graph_attr=graph_font):
+                idm1 = Custom("\n172.16.254.25\n:8080",IDM,fontsize="18px")
+            with Cluster('gzvlam01',graph_attr=graph_font):
+                idm2 = Custom("\n172.16.254.52\n:8080",IDM,fontsize="18px")
+            
             
         with Cluster("API Gateway",graph_attr=graph_font):
             with Cluster('veonapi',graph_attr=graph_font):
@@ -96,7 +98,8 @@ with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
                 
 
     #ex_clnt >> lb >>Edge(label="IDM(Keycloak)",fontsize="18px")>> idm
-    ex_clnt >> lb >>Edge(label="IDM(Keycloak)",fontsize="18px")>> idm
+    ex_clnt >> lb >>Edge(label="IDM(Keycloak)",fontsize="18px")>> idm1
+    lb >>Edge(label="IDM(Keycloak)",fontsize="18px")>>idm2
     lb >> Edge(fontsize="18px")>> apiG >> lan1
     lb >> Edge(fontsize="18px")>> apiG1
     lb >> Edge(fontsize="18px")>> apiG2 >> lan4
@@ -113,4 +116,5 @@ with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
     
     #to bring IDM in front
     
-    idm - Edge(color="transparent") - apiG2
+   
+    idm2 - Edge(color="transparent") - apiG1
