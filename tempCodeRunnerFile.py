@@ -1,2 +1,1 @@
-
-    "align":"center"
+, "align": "center"

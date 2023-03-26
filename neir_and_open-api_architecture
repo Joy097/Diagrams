@@ -1,0 +1,133 @@
+digraph "Neir and Open-api Architecture" {
+	graph [fontcolor="#2D3436" fontname="Sans-Serif" fontsize=40 fontweight=bold label="Neir and Open-api Architecture" "margin-up"="600px" nodesep=0.60 pad=2.0 rankdir=LR ranksep=0.75 splines=ortho]
+	node [fixedsize=true fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13 height=1.4 imagescale=true labelloc=b shape=box style=rounded width=1.4]
+	edge [color="#7B8894"]
+	subgraph "cluster_External Network" {
+		graph [align=center bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=30 label="External Network" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		"9f1e04591c1f4abcb2f21eb41d9df583" [label=BTRC fontsize="18px" height=1.9 image="logos/external.png" shape=none]
+		c9dcc586a285439dbbafd7806230be66 [label="SSL-COMMERZ" fontsize="18px" height=1.9 image="logos/external.png" shape=none]
+	}
+	subgraph "cluster_Internal Network" {
+		graph [align=center bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=45 height="1000px" label="Internal Network" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		subgraph "cluster_Load balancer" {
+			graph [bgcolor="#EBF3E7" fontname="Sans-Serif" fontsize=20 label="Load balancer" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+			b1e81e13014840528d010b652ce8b9e5 [label="172.16.254.26
+(gzvldopenapi02)" fontsize="18px" height=2.3 image="logos/lb.png" shape=none]
+		}
+		subgraph cluster_IDM {
+			graph [align=center bgcolor="#EBF3E7" fontname="Sans-Serif" fontsize=20 label=IDM labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+			d4337d6777f34745ac99c22c0bfed190 [label="172.16.254.25:8080
+(gzvldopenapi01)" fontsize="18px" height=2.3 image="logos/IDM.png" shape=none]
+			"0124e92942db4a9383bbc7433d25a644" [label="172.16.254.52:8080
+(gzvlam01)" fontsize="18px" height=2.3 image="logos/IDM.png" shape=none]
+		}
+		subgraph "cluster_API Gateway" {
+			graph [bgcolor="#EBF3E7" fontname="Sans-Serif" fontsize=20 label="API Gateway" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+			subgraph cluster_veonapi {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=20 label=veonapi labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+				f404b421d51e41b9943eb1f400eb58b2 [label="
+172.16.254.122" fontsize="18px" height=2.3 image="logos/apiG.png" shape=none]
+			}
+			subgraph cluster_gzvldopenapi01 {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=20 label=gzvldopenapi01 labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+				"0878b38bdc4f4da886b355717c2966c3" [label="
+172.16.254.25" fontsize="18px" height=2.3 image="logos/apiG.png" shape=none]
+			}
+			subgraph cluster_gzvlam01 {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=20 label=gzvlam01 labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+				"5f72596364df4a0eaffbfc3a8f42ca87" [label="
+172.16.254.52" fontsize="18px" height=2.3 image="logos/apiG.png" shape=none]
+			}
+		}
+		subgraph cluster_LAN {
+			graph [bgcolor="#EBF3E7" fontname="Sans-Serif" fontsize=20 label=LAN labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+			subgraph cluster_gzvlapihdev02 {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=20 label=gzvlapihdev02 labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+				"131a4eaac9a649ffaaccf9b742ab929e" [label="
+172.16.7.90" fontsize="18px" height=2.3 image="logos/LAN.png" shape=none]
+			}
+			subgraph cluster_gzvllopenapi01 {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=20 label=gzvllopenapi01 labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+				dc12712ca4a0421a842666c7c973a418 [label="
+172.16.7.90" fontsize="18px" height=2.3 image="logos/LAN.png" shape=none]
+			}
+			subgraph cluster_gzvllopenapi02 {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=20 label=gzvllopenapi02 labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+				d66c91164f1a4681bc026b23413002bb [label="
+172.16.7.90" fontsize="18px" height=2.3 image="logos/LAN.png" shape=none]
+			}
+			subgraph cluster_gzvlapihub15 {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=20 label=gzvlapihub15 labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+				"62e4570a92b84fe0ac3e115a91c18797" [label="
+172.16.7.90" fontsize="18px" height=2.3 image="logos/LAN.png" shape=none]
+			}
+		}
+		subgraph "cluster_Business Layer" {
+			graph [bgcolor="#EBF3E7" fontname="Sans-Serif" fontsize=20 label="Business Layer" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+			subgraph "cluster_Identity-Register(N)" {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=20 label="Identity-Register(N)" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+				c672015501094439b03daa4264e07dd3 [label="" fontsize="18px" height=1.9 image="logos/services.png" shape=none]
+			}
+			subgraph "cluster_CMS(OA)" {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=20 label="CMS(OA)" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+				"745050f5bca84caca190e1f07e8cdf68" [label="" fontsize="18px" height=1.9 image="logos/services.png" shape=none]
+			}
+			subgraph "cluster_LMS(OA)" {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=20 label="LMS(OA)" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+				"6a2cd4d35bf2461c9e6bbb091be39a3d" [label="" fontsize="18px" height=1.9 image="logos/services.png" shape=none]
+			}
+			subgraph "cluster_IRIS(OA)" {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=20 label="IRIS(OA)" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+				d019e1dc370649eb8a94282aaff0cd60 [label="" fontsize="18px" height=1.9 image="logos/services.png" shape=none]
+			}
+		}
+		subgraph "cluster_Integration Layer(AH & BTRC)" {
+			graph [bgcolor="#EBF3E7" fontname="Sans-Serif" fontsize=20 label="Integration Layer(AH & BTRC)" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+			subgraph cluster_BTRC {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=20 label=BTRC labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+				"1566919efd3a4ffe986d590b96663ccd" [label="" height=1.9 image="logos/services.png" shape=none]
+			}
+			subgraph cluster_EIR {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=20 label=EIR labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+				"8c7dea8796eb43a99830f35aa4cf748e" [label="" height=1.9 image="logos/services.png" shape=none]
+			}
+			subgraph "cluster_Customer-Information" {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=20 label="Customer-Information" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+				"0d7dd93a3ed9435f9ac1bd1e9c5e35fa" [label="" height=1.9 image="logos/services.png" shape=none]
+			}
+			subgraph cluster_IRIS {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=20 label=IRIS labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+				e7ebc6d8af29450a90aa1e05fe36a01d [label="" height=1.9 image="logos/services.png" shape=none]
+			}
+			subgraph cluster_CMS2 {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=20 label=CMS2 labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+				c2ee0e7d33374ec081d735ca1b90e6ea [label="" height=1.9 image="logos/services.png" shape=none]
+			}
+			subgraph cluster_LMS2 {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=20 label=LMS2 labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded width=600]
+				"1de0f94eeb36420e8abba780a1f43623" [label="" height=1.9 image="logos/services.png" shape=none]
+			}
+		}
+	}
+	"9f1e04591c1f4abcb2f21eb41d9df583" -> b1e81e13014840528d010b652ce8b9e5 [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	c9dcc586a285439dbbafd7806230be66 -> b1e81e13014840528d010b652ce8b9e5 [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	b1e81e13014840528d010b652ce8b9e5 -> d4337d6777f34745ac99c22c0bfed190 [label="IDM(Keycloak)" dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize="18px"]
+	b1e81e13014840528d010b652ce8b9e5 -> "0124e92942db4a9383bbc7433d25a644" [label="IDM(Keycloak)" dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize="18px"]
+	b1e81e13014840528d010b652ce8b9e5 -> f404b421d51e41b9943eb1f400eb58b2 [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize="18px"]
+	f404b421d51e41b9943eb1f400eb58b2 -> "131a4eaac9a649ffaaccf9b742ab929e" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	b1e81e13014840528d010b652ce8b9e5 -> "0878b38bdc4f4da886b355717c2966c3" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize="18px"]
+	b1e81e13014840528d010b652ce8b9e5 -> "5f72596364df4a0eaffbfc3a8f42ca87" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize="18px"]
+	"5f72596364df4a0eaffbfc3a8f42ca87" -> "62e4570a92b84fe0ac3e115a91c18797" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"0878b38bdc4f4da886b355717c2966c3" -> dc12712ca4a0421a842666c7c973a418 [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"0878b38bdc4f4da886b355717c2966c3" -> d66c91164f1a4681bc026b23413002bb [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"131a4eaac9a649ffaaccf9b742ab929e" -> c672015501094439b03daa4264e07dd3 [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	dc12712ca4a0421a842666c7c973a418 -> "745050f5bca84caca190e1f07e8cdf68" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	d66c91164f1a4681bc026b23413002bb -> "6a2cd4d35bf2461c9e6bbb091be39a3d" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"62e4570a92b84fe0ac3e115a91c18797" -> d019e1dc370649eb8a94282aaff0cd60 [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	c672015501094439b03daa4264e07dd3 -> "1566919efd3a4ffe986d590b96663ccd" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"745050f5bca84caca190e1f07e8cdf68" -> "0d7dd93a3ed9435f9ac1bd1e9c5e35fa" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"6a2cd4d35bf2461c9e6bbb091be39a3d" -> c2ee0e7d33374ec081d735ca1b90e6ea [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	d019e1dc370649eb8a94282aaff0cd60 -> "1de0f94eeb36420e8abba780a1f43623" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	d4337d6777f34745ac99c22c0bfed190 -> "5f72596364df4a0eaffbfc3a8f42ca87" [color=transparent dir=none fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"0124e92942db4a9383bbc7433d25a644" -> "5f72596364df4a0eaffbfc3a8f42ca87" [color=transparent dir=none fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+}

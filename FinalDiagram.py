@@ -20,12 +20,10 @@ graph_attr={
     "fontweight":"bold"
 }
 graph_in={
-    "fontsize":"45"
+    "fontsize":"45",
+    "height": "1000px",
+    "align": "center"
 }
-graph_ex={
-    "fontsize":"30",
-    "align":"center"
-    }
 graph_font={
     "fontsize":"20",
     "width":"600"
@@ -34,7 +32,7 @@ graph_font={
 
 with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
     
-    with Cluster("External Network",graph_attr=graph_ex):
+    with Cluster("External Network",graph_attr={"fontsize":"30", "align": "center"}):
         ex_clnt = [Custom("BTRC",external,fontsize="18px"),
                    Custom("SSL-COMMERZ",external,fontsize="18px")]
         
@@ -45,7 +43,7 @@ with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
         with Cluster("Load balancer",graph_attr=graph_font):
             lb = Custom("172.16.254.26\n(gzvldopenapi02)",loadBalancer,fontsize="18px")
         
-        with Cluster("IDM",graph_attr=graph_font):
+        with Cluster("IDM",graph_attr={"fontsize":"20", "align": "center"}):
             idm = [ Custom("172.16.254.25:8080\n(gzvldopenapi01)",IDM,fontsize="18px"),
                     Custom("172.16.254.52:8080\n(gzvlam01)",IDM,fontsize="18px")]
             
