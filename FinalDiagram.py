@@ -20,21 +20,15 @@ graph_attr={
     "fontweight":"bold"
 }
 graph_in={
-    "pos":"150,10!",
     "fontsize":"25"
 }
 graph_ex={
-    "fontsize":"30",
-    "width":"450px",
-    "pos":"10,10!"
+    "fontsize":"30"
     }
 graph_font={
-    "pos":"10,10!",
     "fontsize":"20",
 }
-graph_font1={
-    "fontsize":"15"
-}
+
 
 with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
     
@@ -59,10 +53,15 @@ with Diagram("Neir and Open-api Architecture", show=True,graph_attr=graph_attr):
             apiG2 = Custom("172.16.254.52\n(gzvlam01)",apiGateway,fontsize="18px")
 
         with Cluster("LAN",graph_attr=graph_font):
-            lan1 = Custom("172.16.7.90\n(gzvlapihdev02)",LAN,fontsize="18px")
-            lan2 = Custom("172.16.7.90\n(gzvllopenapi01)",LAN,fontsize="18px")
-            lan3 = Custom("172.16.7.90\n(gzvllopenapi02)",LAN,fontsize="18px")
-            lan4 = Custom("172.16.7.90\n(gzvlapihub15)",LAN,fontsize="18px")
+            with Cluster('gzvlapihdev02',graph_attr=graph_font):
+                lan1 = Custom("172.16.7.90",LAN,fontsize="18px")
+            with Cluster('gzvllopenapi01',graph_attr=graph_font):
+                lan2 = Custom("172.16.7.90",LAN,fontsize="18px")
+            with Cluster('gzvllopenapi02',graph_attr=graph_font):
+                lan3 = Custom("172.16.7.90",LAN,fontsize="18px")
+            with Cluster('gzvlapihub15',graph_attr=graph_font):
+                lan4 = Custom("172.16.7.90",LAN,fontsize="18px")
+           
             
         with Cluster("Business Layer",graph_attr=graph_font):
             bl1 =  Custom("Identity-Register(N)",srvc,fontsize="18px")
